@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 import Header from "./Header";
 import Home from "./Home";
+import ShortUrlRedirect from "./ShortUrlRedirect";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -12,6 +13,15 @@ const Router = () => {
         <>
           <Header />
           <Home />
+        </>
+      ),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/:key",
+      element: (
+        <>
+          <ShortUrlRedirect />
         </>
       ),
       errorElement: <ErrorPage />,
