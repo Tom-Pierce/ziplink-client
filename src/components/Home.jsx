@@ -31,7 +31,6 @@ const Home = () => {
               name="url"
               className={styles.textInput}
               placeholder="Enter URL here"
-              defaultValue="https://www.twitch.tv/"
             />
             <button className={styles.btn} type="button" onClick={clickHandler}>
               Zip Link
