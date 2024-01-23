@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 4rem;
+  padding: 1.5rem;
+}
