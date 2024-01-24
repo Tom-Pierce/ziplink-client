@@ -6,7 +6,6 @@ const Home = () => {
 
   const clickHandler = async () => {
     const url = document.getElementById("longUrlInput").value;
-    console.log(url);
     const res = await fetch("http://localhost:3000/api/url", {
       method: "post",
       mode: "cors",
@@ -41,6 +40,8 @@ const Home = () => {
               {"Zipped Link: "}
               <a
                 href={`http://localhost:5173/${urlKey}`}
+                target="_blank"
+                rel="noopener noreferrer"
               >{`localhost:5173/${urlKey}`}</a>
             </p>
           ) : (
