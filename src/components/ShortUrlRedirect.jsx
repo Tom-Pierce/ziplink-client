@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styles from "../css/ShortUrlRedirect.module.css";
 
 const ShortUrlRedirect = () => {
   const { key } = useParams();
@@ -19,7 +20,18 @@ const ShortUrlRedirect = () => {
     };
     fetchData();
   });
-  return <>{url ? <p></p> : <p>Redirecting...</p>}</>;
+  return (
+    <>
+      {url ? (
+        <p></p>
+      ) : (
+        <div className={styles.wrapper}>
+          {" "}
+          <div className={styles.loader}></div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default ShortUrlRedirect;
