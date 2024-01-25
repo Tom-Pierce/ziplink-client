@@ -4,8 +4,8 @@ import styles from "../css/ShortUrlRedirect.module.css";
 import InvalidKey from "./InvalidKey";
 
 const ShortUrlRedirect = () => {
-  const { key } = useParams();
   const [url, setUrl] = useState(null);
+  const { key } = useParams();
   const [validKey, setValidKey] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +24,7 @@ const ShortUrlRedirect = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [key]);
 
   useEffect(() => {
     if (url) window.location.replace(url);

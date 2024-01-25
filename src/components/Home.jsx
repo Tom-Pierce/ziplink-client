@@ -25,7 +25,6 @@ const Home = () => {
       setValidUrl(false);
     }
   };
-
   return (
     <>
       <div className={styles.main}>
@@ -51,7 +50,7 @@ const Home = () => {
                 href={`${window.location.origin}/${urlKey}`}
                 target="_blank"
                 rel="noopener noreferrer"
-              >{`${window.location.origin}/${urlKey}`}</a>
+              >{`${window.location.host}/${urlKey}`}</a>
             </p>
           ) : (
             <p></p>
