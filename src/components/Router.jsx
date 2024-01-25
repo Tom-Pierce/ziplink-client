@@ -21,6 +21,7 @@ const Router = () => {
       path: "/:key",
       element: (
         <>
+          <Header />
           <ShortUrlRedirect />
         </>
       ),

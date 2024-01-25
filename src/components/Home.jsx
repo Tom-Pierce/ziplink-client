@@ -48,10 +48,10 @@ const Home = () => {
             <p>
               {"Zipped Link: "}
               <a
-                href={`http://localhost:5173/${urlKey}`}
+                href={`${window.location.origin}/${urlKey}`}
                 target="_blank"
                 rel="noopener noreferrer"
-              >{`localhost:5173/${urlKey}`}</a>
+              >{`${window.location.origin}/${urlKey}`}</a>
             </p>
           ) : (
             <p></p>
