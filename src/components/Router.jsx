@@ -4,6 +4,7 @@ import ErrorPage from "./ErrorPage";
 import Header from "./Header";
 import Home from "./Home";
 import ShortUrlRedirect from "./ShortUrlRedirect";
+import ViewClicks from "./ViewClicks";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -13,6 +14,16 @@ const Router = () => {
         <>
           <Header />
           <Home />
+        </>
+      ),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/clicks/:key",
+      element: (
+        <>
+          <Header />
+          <ViewClicks />
         </>
       ),
       errorElement: <ErrorPage />,

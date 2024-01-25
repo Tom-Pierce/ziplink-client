@@ -29,7 +29,7 @@ const Home = () => {
     <>
       <div className={styles.main}>
         <form id="urlForm" className={styles.urlForm}>
-          <h3>Paste the URL to be shortened below</h3>
+          <h3>Paste the URL to be zipped below</h3>
           <div className={styles.controls}>
             <input
               type="text"
@@ -42,7 +42,7 @@ const Home = () => {
               Zip Link
             </button>
           </div>
-          {validUrl ? <p></p> : <p>Please provide a valid URL to shorten</p>}
+          {validUrl ? <p></p> : <p>Please provide a valid URL to zip</p>}
           {urlKey ? (
             <p>
               {"Zipped Link: "}

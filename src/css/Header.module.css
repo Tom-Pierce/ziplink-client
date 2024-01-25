@@ -7,3 +7,8 @@
   font-size: 4rem;
   padding: 1.5rem;
 }
+
+.header a {
+  text-decoration: none;
+  color: var(--text);
+}
