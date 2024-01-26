@@ -17,9 +17,11 @@ const ShortUrlRedirect = () => {
         },
       });
       if (res.status === 404) {
+        console.log("404");
         setValidKey(false);
       } else {
         const tempUrl = await res.json();
+        setValidKey(true);
         setUrl(tempUrl.url);
       }
     };
@@ -31,17 +33,13 @@ const ShortUrlRedirect = () => {
   }, [url]);
   return (
     <>
-      {url ? (
-        validKey ? (
-          <p></p>
-        ) : (
-          <div className={styles.wrapper}>
-            {" "}
-            <div className={styles.loader}></div>
-          </div>
-        )
-      ) : (
+      {validKey === false ? (
         <InvalidKey />
+      ) : (
+        <div className={styles.wrapper}>
+          {" "}
+          <div className={styles.loader}></div>
+        </div>
       )}
     </>
   );
