@@ -1,6 +1,7 @@
 .main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .urlForm {
@@ -22,4 +23,23 @@
   padding: 0.5rem;
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+}
+
+.customUrlWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.btnLink {
+  text-decoration: none;
+  width: fit-content;
+  background-color: var(--primary);
+  color: var(--text);
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem;
+  border-radius: 0.25rem;
 }

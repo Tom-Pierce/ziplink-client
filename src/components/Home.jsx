@@ -7,6 +7,7 @@ const Home = () => {
   const [validUrl, setValidUrl] = useState(true);
 
   const clickHandler = async () => {
+    event.preventDefault();
     const url = urlValidator(document.getElementById("longUrlInput").value);
     if (url) {
       const res = await fetch("http://localhost:3000/api/url", {
@@ -29,7 +30,7 @@ const Home = () => {
     <>
       <div className={styles.main}>
         <form id="urlForm" className={styles.urlForm}>
-          <h3>Paste the URL to be zipped below</h3>
+          <h2>Paste the URL to be zipped below</h2>
           <div className={styles.controls}>
             <input
               type="text"
@@ -38,24 +39,30 @@ const Home = () => {
               className={styles.textInput}
               placeholder="Enter URL here"
             />
-            <button className={styles.btn} type="button" onClick={clickHandler}>
+            <button className={styles.btn} type="submit" onClick={clickHandler}>
               Zip Link
             </button>
           </div>
-          {validUrl ? <p></p> : <p>Please provide a valid URL to zip</p>}
-          {urlKey ? (
-            <p>
-              {"Zipped Link: "}
-              <a
-                href={`${window.location.origin}/${urlKey}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >{`${window.location.host}/${urlKey}`}</a>
-            </p>
-          ) : (
-            <p></p>
-          )}
         </form>
+        {validUrl ? <p></p> : <p>Please provide a valid URL to zip</p>}
+        {urlKey ? (
+          <p>
+            {"Zipped Link: "}
+            <a
+              href={`${window.location.origin}/${urlKey}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >{`${window.location.host}/${urlKey}`}</a>
+          </p>
+        ) : (
+          <p></p>
+        )}
+        <div className={styles.customUrlWrapper}>
+          <h2>Want a custom zipped URL?</h2>
+          <a className={styles.btnLink} href="/custom">
+            Custom URL
+          </a>
+        </div>
       </div>
     </>
   );
