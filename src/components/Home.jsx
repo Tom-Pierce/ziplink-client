@@ -5,12 +5,12 @@ import urlValidator from "../utils/urlValidator";
 const Home = () => {
   const [urlKey, setUrlKey] = useState(undefined);
   const [validUrl, setValidUrl] = useState(true);
-
+  console.log(import.meta.env.VITE_API_URL);
   const clickHandler = async () => {
     event.preventDefault();
     const url = urlValidator(document.getElementById("longUrlInput").value);
     if (url) {
-      const res = await fetch("http://localhost:3000/api/url", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}api/url`, {
         method: "post",
         mode: "cors",
         body: JSON.stringify({ url: url }),

@@ -9,7 +9,7 @@ const ShortUrlRedirect = () => {
   const [validKey, setValidKey] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`http://localhost:3000/api/${key}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}api/${key}`, {
         method: "get",
         mode: "cors",
         headers: {

@@ -19,7 +19,7 @@ const CustomUrl = () => {
     const url = urlValidator(document.getElementById("longUrlInput").value);
     if (!url) return setValidUrl(false);
     if (!customKey) return setValidCustomKey(false);
-    const res = await fetch("http://localhost:3000/api/url", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}api/url`, {
       method: "post",
       mode: "cors",
       body: JSON.stringify({ url: url, customKey: customKey }),

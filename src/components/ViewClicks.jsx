@@ -10,13 +10,16 @@ const ViewClicks = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`http://localhost:3000/api/clicks/${key}`, {
-        method: "get",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}api/clicks/${key}`,
+        {
+          method: "get",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (res.status === 404) {
         setValidKey(false);
       } else {
