@@ -6,6 +6,7 @@ import Home from "./Home";
 import ShortUrlRedirect from "./ShortUrlRedirect";
 import ViewClicks from "./ViewClicks";
 import CustomUrl from "./CustomUrl";
+import UnzipUrl from "./UnzipUrl";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -25,6 +26,16 @@ const Router = () => {
         <>
           <Header />
           <CustomUrl />
+        </>
+      ),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/unzip",
+      element: (
+        <>
+          <Header />
+          <UnzipUrl />
         </>
       ),
       errorElement: <ErrorPage />,

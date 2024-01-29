@@ -17,7 +17,6 @@ const ShortUrlRedirect = () => {
         },
       });
       if (res.status === 404) {
-        console.log("404");
         setValidKey(false);
       } else {
         const tempUrl = await res.json();
