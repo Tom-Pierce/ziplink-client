@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import ErrorPage from "./ErrorPage";
-import Header from "./Header";
 import Home from "./Home";
 import ShortUrlRedirect from "./ShortUrlRedirect";
 import ViewClicks from "./ViewClicks";
@@ -14,7 +13,6 @@ const Router = () => {
       path: "/",
       element: (
         <>
-          <Header />
           <Home />
         </>
       ),
@@ -24,7 +22,6 @@ const Router = () => {
       path: "/custom",
       element: (
         <>
-          <Header />
           <CustomUrl />
         </>
       ),
@@ -34,7 +31,6 @@ const Router = () => {
       path: "/unzip",
       element: (
         <>
-          <Header />
           <UnzipUrl />
         </>
       ),
@@ -44,7 +40,6 @@ const Router = () => {
       path: "/clicks/:key",
       element: (
         <>
-          <Header />
           <ViewClicks />
         </>
       ),
@@ -54,7 +49,6 @@ const Router = () => {
       path: "/:key",
       element: (
         <>
-          <Header />
           <ShortUrlRedirect />
         </>
       ),
