@@ -8,21 +8,25 @@ const Home = () => {
   const clickHandler = async () => {
     event.preventDefault();
     const url = urlValidator(document.getElementById("longUrlInput").value);
-    if (url) {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}api/url`, {
-        method: "post",
-        mode: "cors",
-        body: JSON.stringify({ url: url }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const key = await res.json();
-      setValidUrl(true);
-      setUrlKey(key.key);
-    } else {
-      setUrlKey(undefined);
-      setValidUrl(false);
+    try {
+      if (url) {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}api/url`, {
+          method: "post",
+          mode: "cors",
+          body: JSON.stringify({ url: url }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const key = await res.json();
+        setValidUrl(true);
+        setUrlKey(key.key);
+      } else {
+        setUrlKey(undefined);
+        setValidUrl(false);
+      }
+    } catch (error) {
+      console.log(`Error fetching data: ${error}`);
     }
   };
   return (

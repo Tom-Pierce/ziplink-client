@@ -17,24 +17,28 @@ const CustomUrl = () => {
     event.preventDefault();
     const customKey = document.getElementById("customKeyInput").value;
     const url = urlValidator(document.getElementById("longUrlInput").value);
-    if (!url) return setValidUrl(false);
-    if (!customKey) return setValidCustomKey(false);
-    const res = await fetch(`${import.meta.env.VITE_API_URL}api/url`, {
-      method: "post",
-      mode: "cors",
-      body: JSON.stringify({ url: url, customKey: customKey }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (res.status === 409) {
-      setCustomKeyAvailable(false);
-    } else {
-      const jsonRes = await res.json();
-      setValidUrl(true);
-      setValidCustomKey(true);
-      setCustomKeyAvailable(true);
-      setUrlKey(jsonRes.key);
+    try {
+      if (!url) return setValidUrl(false);
+      if (!customKey) return setValidCustomKey(false);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}api/url`, {
+        method: "post",
+        mode: "cors",
+        body: JSON.stringify({ url: url, customKey: customKey }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.status === 409) {
+        setCustomKeyAvailable(false);
+      } else {
+        const jsonRes = await res.json();
+        setValidUrl(true);
+        setValidCustomKey(true);
+        setCustomKeyAvailable(true);
+        setUrlKey(jsonRes.key);
+      }
+    } catch (error) {
+      console.log(`Error fetching data: ${error}`);
     }
   };
 

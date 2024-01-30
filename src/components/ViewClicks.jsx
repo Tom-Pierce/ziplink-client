@@ -10,7 +10,7 @@ const ViewClicks = () => {
 
   useEffect(() => {
     if (paramKey !== undefined) fetchData(paramKey);
-  }, []);
+  }, [paramKey]);
 
   const clickHandler = async () => {
     setValidKey(true);
@@ -23,19 +23,23 @@ const ViewClicks = () => {
   };
 
   const fetchData = async (key) => {
-    const res = await fetch(
-      `${import.meta.env.VITE_API_URL}api/clicks/${key}`,
-      {
-        method: "get",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    if (res.status === 404) setValidKey(false);
-    const json = await res.json();
-    setClicks(json.clicks);
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}api/clicks/${key}`,
+        {
+          method: "get",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.status === 404) setValidKey(false);
+      const json = await res.json();
+      setClicks(json.clicks);
+    } catch (error) {
+      console.log(`Error fetching data: ${error}`);
+    }
   };
 
   return (

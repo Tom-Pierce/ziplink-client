@@ -12,19 +12,23 @@ const UnzipUrl = () => {
     setValidKey(true);
     const zipLink = urlValidator(document.getElementById("zipLinkInput").value);
     const key = zipLink.substring(zipLink.lastIndexOf("/") + 1);
-    const res = await fetch(`${import.meta.env.VITE_API_URL}api/${key}`, {
-      method: "get",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (res.status === 404) {
-      setValidKey(false);
-    } else {
-      const tempUrl = await res.json();
-      setValidKey(true);
-      setUrl(tempUrl.url);
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}api/${key}`, {
+        method: "get",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.status === 404) {
+        setValidKey(false);
+      } else {
+        const tempUrl = await res.json();
+        setValidKey(true);
+        setUrl(tempUrl.url);
+      }
+    } catch (error) {
+      console.log(`Error fetching data: ${error}`);
     }
   };
   return (
