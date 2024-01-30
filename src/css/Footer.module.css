@@ -1,0 +1,34 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding: 1rem;
+  border-top: 2px solid var(--primary);
+  gap: 1rem;
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.title {
+  font-size: 3.5rem;
+}
+
+.menu {
+  display: flex;
+  gap: 4rem;
+}
+
+.logo {
+  height: 1.5rem;
+}
+
+.githubLogo {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}

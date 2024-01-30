@@ -40,57 +40,63 @@ const CustomUrl = () => {
 
   return (
     <>
-      <div className={styles.main}>
-        <form id="urlForm" className={styles.urlForm}>
-          <h2>Paste the URL to be zipped below</h2>
-          <div className={styles.controls}>
-            <input
-              type="text"
-              id="longUrlInput"
-              name="url"
-              className={styles.urlInput}
-              placeholder="Enter URL here"
-            />
-
-            <div className={styles.controlsWrapper}>
+      <div className="main">
+        <div className={styles.customUrlBox}>
+          <form id="urlForm" className={styles.urlForm}>
+            <h1>Paste the URL to be zipped below</h1>
+            <div className={styles.controls}>
               <input
                 type="text"
-                id="customKeyInput"
-                name="customKey"
-                className={styles.customKeyInput}
-                placeholder="Enter custom URL here"
-                required
+                id="longUrlInput"
+                name="url"
+                className={styles.urlInput}
+                placeholder="Enter URL here"
               />
 
-              <button
-                className={styles.btn}
-                type="submit"
-                onClick={clickHandler}
-              >
-                Zip Link
-              </button>
+              <div className={styles.controlsWrapper}>
+                <input
+                  type="text"
+                  id="customKeyInput"
+                  name="customKey"
+                  className={styles.customKeyInput}
+                  placeholder="Enter custom URL here"
+                  required
+                />
+
+                <button
+                  className={styles.btn}
+                  type="submit"
+                  onClick={clickHandler}
+                >
+                  Zip Link
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
-        {validUrl ? <p></p> : <p>Please provide a valid URL to zip</p>}
-        {validCustomKey ? (
-          <p></p>
-        ) : (
-          <p>Please provide a valid custom URL to use</p>
-        )}
-        {customKeyAvailable ? <p></p> : <p>Custom URL already in use</p>}
-        {urlKey ? (
-          <p>
-            {"Zipped Link: "}
-            <a
-              href={`${window.location.origin}/${urlKey}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >{`${window.location.host}/${urlKey}`}</a>
-          </p>
-        ) : (
-          <p></p>
-        )}
+          </form>
+          {validUrl ? null : (
+            <p className={styles.errorMessage}>
+              Please provide a valid URL to zip
+            </p>
+          )}
+          {validCustomKey ? null : (
+            <p className={styles.errorMessage}>
+              Please provide a valid custom URL to use
+            </p>
+          )}
+          {customKeyAvailable ? null : (
+            <p className={styles.errorMessage}>Custom URL already in use</p>
+          )}
+          {urlKey ? (
+            <p className={styles.zippedLink}>
+              {"Zipped Link: "}
+              <a
+                href={`${window.location.origin}/${urlKey}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >{`${window.location.host}/${urlKey}`}</a>
+            </p>
+          ) : null}
+        </div>
       </div>
     </>
   );

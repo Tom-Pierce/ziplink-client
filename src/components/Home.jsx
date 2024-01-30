@@ -27,39 +27,52 @@ const Home = () => {
   };
   return (
     <>
-      <div className={styles.main}>
-        <form id="urlForm" className={styles.urlForm}>
-          <h2>Paste the URL to be zipped below</h2>
-          <div className={styles.controls}>
-            <input
-              type="text"
-              id="longUrlInput"
-              name="url"
-              className={styles.textInput}
-              placeholder="Enter URL here"
-            />
-            <button className={styles.btn} type="submit" onClick={clickHandler}>
-              Zip Link
-            </button>
-          </div>
-        </form>
-        {validUrl ? <p></p> : <p>Please provide a valid URL to zip</p>}
-        {urlKey ? (
+      <div className="main">
+        <div className={styles.urlZipperBox}>
+          <form id="urlForm" className={styles.urlForm}>
+            <h1>Paste the URL to be zipped below</h1>
+            <div className={styles.controls}>
+              <input
+                type="text"
+                id="longUrlInput"
+                name="url"
+                className={styles.urlInput}
+                placeholder="Enter URL here"
+              />
+              <button
+                className={styles.btn}
+                type="submit"
+                onClick={clickHandler}
+              >
+                Zip Link
+              </button>
+            </div>
+          </form>
+          {validUrl ? null : (
+            <p className={styles.errorMessage}>
+              Please provide a valid URL to zip
+            </p>
+          )}
+          {urlKey ? (
+            <p className={styles.zippedLink}>
+              {"Zipped Link: "}
+              <a
+                href={`${window.location.origin}/${urlKey}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >{`${window.location.host}/${urlKey}`}</a>
+            </p>
+          ) : null}
           <p>
-            {"Zipped Link: "}
-            <a
-              href={`${window.location.origin}/${urlKey}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >{`${window.location.host}/${urlKey}`}</a>
+            ZipLink is a free tool to shorten URLs and generate short links that
+            are easy to share online
           </p>
-        ) : (
-          <p></p>
-        )}
-        <div className={styles.customUrlWrapper}>
-          <h2>Want a custom zipped URL?</h2>
-          <a className={styles.btnLink} href="/custom">
-            Custom URL
+        </div>
+        <div className={styles.infoBox}>
+          <h2>Want more features? Create a free account!</h2>
+          <p>Create custom ZipLinks, view analytics and manage your ZipLinks</p>
+          <a className={styles.btnLink} href="/signup">
+            Create Account
           </a>
         </div>
       </div>

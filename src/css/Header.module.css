@@ -1,14 +1,15 @@
 .header {
   display: flex;
   justify-content: center;
+  border-bottom: 2px solid var(--primary);
+  padding: 0.5rem;
 }
 
 .title {
-  font-size: 4rem;
-  padding: 1.5rem;
+  font-size: 3.5rem;
 }
 
 .header a {
   text-decoration: none;
-  color: var(--text);
+  color: var(--secondary);
 }

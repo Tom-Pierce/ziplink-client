@@ -7,9 +7,9 @@ const UnzipUrl = () => {
   const [validKey, setValidKey] = useState(true);
 
   const clickHandler = async () => {
+    event.preventDefault();
     setUrl(null);
     setValidKey(true);
-    event.preventDefault();
     const zipLink = urlValidator(document.getElementById("zipLinkInput").value);
     const key = zipLink.substring(zipLink.lastIndexOf("/") + 1);
     const res = await fetch(`${import.meta.env.VITE_API_URL}api/${key}`, {
@@ -29,30 +29,38 @@ const UnzipUrl = () => {
   };
   return (
     <>
-      <div className={styles.main}>
-        <form id="urlForm" className={styles.urlForm}>
-          <h2>Paste the URL to be unzipped below</h2>
-          <div>
-            <input
-              type="text"
-              id="zipLinkInput"
-              name="url"
-              className={styles.urlInput}
-              placeholder="Enter zipped URL here"
-            />
-            <button type="submit" className={styles.btn} onClick={clickHandler}>
-              Unzip
-            </button>
-          </div>
-        </form>
-        {url ? (
-          <p>
-            This ZipLink redirects to <a href={url}>{url}</a>{" "}
-          </p>
-        ) : (
-          <p></p>
-        )}
-        {validKey ? <p></p> : <p>Invalid or expired ZipLink</p>}
+      <div className="main">
+        <div className={styles.unzipUrlBox}>
+          <form id="urlForm" className={styles.urlForm}>
+            <h1>Paste the ZipLink below to see where it redirects</h1>
+            <div>
+              <div className={styles.controls}>
+                <input
+                  type="text"
+                  id="zipLinkInput"
+                  name="url"
+                  className={styles.urlInput}
+                  placeholder="Enter zipped URL here"
+                />
+                <button
+                  type="submit"
+                  className={styles.btn}
+                  onClick={clickHandler}
+                >
+                  Unzip
+                </button>
+              </div>
+            </div>
+          </form>
+          {url ? (
+            <p>
+              This ZipLink redirects to <a href={url}>{url}</a>{" "}
+            </p>
+          ) : (
+            <p></p>
+          )}
+          {validKey ? <p></p> : <p>Invalid or expired ZipLink</p>}
+        </div>
       </div>
     </>
   );

@@ -32,7 +32,7 @@ const ViewClicks = () => {
   return (
     <>
       {validKey ? (
-        <div className={styles.main}>
+        <div className="main">
           <a
             className={styles.block}
             href={`${window.location.origin}/${key}`}
