@@ -37,7 +37,16 @@ const Router = () => {
       errorElement: <ErrorPage />,
     },
     {
-      path: "/clicks/:key",
+      path: "/clicks/:paramKey",
+      element: (
+        <>
+          <ViewClicks />
+        </>
+      ),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/clicks",
       element: (
         <>
           <ViewClicks />
