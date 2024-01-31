@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../App";
 import styles from "../css/Header.module.css";
 import { Link } from "react-router-dom";
+import logout from "../utils/logout";
 
 const Header = () => {
   const { user } = useContext(UserContext);
@@ -14,7 +15,9 @@ const Header = () => {
         </Link>
         {user ? (
           <div className={styles.authBar}>
-            <Link to="/logout">Logout</Link>
+            <Link onClick={logout} to="/">
+              Logout
+            </Link>
           </div>
         ) : (
           <div className={styles.authBar}>
