@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../css/Home.module.css";
 import urlValidator from "../utils/urlValidator";
 
 const Home = () => {
+  const [user, setUser] = useState(undefined);
   const [urlKey, setUrlKey] = useState(undefined);
   const [validUrl, setValidUrl] = useState(true);
   const clickHandler = async () => {
@@ -29,6 +30,27 @@ const Home = () => {
       console.log(`Error fetching data: ${error}`);
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}api/auth/userInfo`,
+        {
+          method: "GET",
+          mode: "cors",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const json = await res.json();
+      if (json.success) {
+        setUser({ username: json.user.displayName });
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <div className="main">
