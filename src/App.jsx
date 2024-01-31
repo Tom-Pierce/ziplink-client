@@ -26,7 +26,6 @@ function App() {
             },
           }
         );
-        console.log("fethcing data");
         const json = await res.json();
         if (json.success) {
           setUser({ username: json.user.username });
