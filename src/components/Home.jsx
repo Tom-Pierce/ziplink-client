@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import styles from "../css/Home.module.css";
 import urlValidator from "../utils/urlValidator";
+import { UserContext } from "../App";
 
 const Home = () => {
-  const [user, setUser] = useState(undefined);
+  const { user } = useContext(UserContext);
   const [urlKey, setUrlKey] = useState(undefined);
   const [validUrl, setValidUrl] = useState(true);
-  const clickHandler = async () => {
+
+  // create zipLink function
+  const zipLinkClickHandler = async () => {
     event.preventDefault();
     const url = urlValidator(document.getElementById("longUrlInput").value);
     try {
@@ -31,31 +34,12 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(
-        `${import.meta.env.VITE_API_URL}api/auth/userInfo`,
-        {
-          method: "GET",
-          mode: "cors",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const json = await res.json();
-      if (json.success) {
-        setUser({ username: json.user.displayName });
-      }
-    };
-    fetchData();
-  }, []);
   return (
     <>
       <div className="main">
         <div className={styles.urlZipperBox}>
           <form id="urlForm" className={styles.urlForm}>
+            {user ? <p>{user.username}</p> : null}
             <h1>Paste the URL to be zipped below</h1>
             <div className={styles.controls}>
               <input
@@ -68,7 +52,7 @@ const Home = () => {
               <button
                 className={styles.btn}
                 type="submit"
-                onClick={clickHandler}
+                onClick={zipLinkClickHandler}
               >
                 Zip Link
               </button>

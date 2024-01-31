@@ -1,5 +1,6 @@
 import styles from "../css/Footer.module.css";
 import githubLogo from "../assets/github-mark.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -7,25 +8,25 @@ const Footer = () => {
       <footer className={styles.footer}>
         <ul className={styles.menu}>
           <li>
-            <a href="/">ZipLink</a>
+            <Link to="/">ZipLink</Link>
           </li>
           <li>
-            <a href="/custom">Custom ZipLink</a>
+            <Link to="/custom">Custom ZipLink</Link>
           </li>
           <li>
-            <a href="/unzip">Unzip Link</a>
+            <Link to="/unzip">Unzip Link</Link>
           </li>
           <li>
-            <a href="/clicks">ZipLink Click Counter</a>
+            <Link to="/clicks">ZipLink Click Counter</Link>
           </li>
           <li>
-            <a
+            <Link
               className={styles.githubLogo}
-              href="https://github.com/Tom-Pierce/ziplink-client"
+              to="https://github.com/Tom-Pierce/ziplink-client"
             >
               <img className={styles.logo} src={githubLogo} alt="Github Logo" />{" "}
               Tom Pierce
-            </a>
+            </Link>
           </li>
         </ul>
       </footer>
