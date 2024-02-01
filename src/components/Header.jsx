@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../App";
 import styles from "../css/Header.module.css";
 import { Link } from "react-router-dom";
-import logout from "../utils/logout";
+import NavBarProfile from "./NavBarProfile";
 
 const Header = () => {
   const { user } = useContext(UserContext);
@@ -10,14 +10,12 @@ const Header = () => {
   return (
     <>
       <header className={styles.header}>
-        <Link to="/">
-          <h1 className={styles.title}>ZipLink</h1>
+        <Link className={styles.title} to="/">
+          ZipLink
         </Link>
         {user ? (
           <div className={styles.authBar}>
-            <Link onClick={logout} to="/">
-              Logout
-            </Link>
+            <NavBarProfile />
           </div>
         ) : (
           <div className={styles.authBar}>

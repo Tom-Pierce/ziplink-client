@@ -1,0 +1,11 @@
+.profile {
+}
+
+.profilePicture {
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.profilePicture:hover {
+  cursor: pointer;
+}

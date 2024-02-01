@@ -1,10 +1,8 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import styles from "../css/Home.module.css";
 import urlValidator from "../utils/urlValidator";
-import { UserContext } from "../App";
 
 const Home = () => {
-  const { user } = useContext(UserContext);
   const [urlKey, setUrlKey] = useState(undefined);
   const [validUrl, setValidUrl] = useState(true);
 
@@ -39,7 +37,6 @@ const Home = () => {
       <div className="main">
         <div className={styles.urlZipperBox}>
           <form id="urlForm" className={styles.urlForm}>
-            {user ? <p>{user.username}</p> : null}
             <h1>Paste the URL to be zipped below</h1>
             <div className={styles.controls}>
               <input

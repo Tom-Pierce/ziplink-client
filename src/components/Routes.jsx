@@ -17,7 +17,7 @@ const routes = () => {
       <Route path="/unzip" element={<UnzipUrl />} />
       <Route path="/clicks/:paramKey" element={<ViewClicks />} />
       <Route path="/clicks" element={<ViewClicks />} />
-      <Route path="/:key" element={ShortUrlRedirect} />
+      <Route path="/:key" element={<ShortUrlRedirect />} />
     </Routes>
   );
 };

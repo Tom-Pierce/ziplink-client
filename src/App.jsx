@@ -11,7 +11,7 @@ export const UserContext = createContext(null);
 function App() {
   const [user, setUser] = useState(undefined);
 
-  // fetch user data if logged in
+  // fetch user data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,7 +28,12 @@ function App() {
         );
         const json = await res.json();
         if (json.success) {
-          setUser({ username: json.user.username });
+          setUser({
+            username: json.user.username,
+            pfp: json.user.pfp,
+            zipLinks: json.user.ziplinks,
+            email: json.user.email,
+          });
         } else {
           // if request is not successful, remove user data
           setUser(undefined);

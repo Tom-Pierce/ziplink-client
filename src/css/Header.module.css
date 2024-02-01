@@ -1,15 +1,24 @@
 .header {
   display: flex;
   justify-content: center;
+  align-items: center;
   border-bottom: 2px solid var(--primary);
   padding: 0.5rem;
+  position: relative;
 }
 
 .title {
   font-size: 3.5rem;
+  font-weight: bold;
 }
 
 .header a {
   text-decoration: none;
   color: var(--secondary);
+}
+.authBar {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  right: 1.5rem;
 }
