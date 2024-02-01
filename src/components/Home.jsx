@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "../css/Home.module.css";
 import urlValidator from "../utils/urlValidator";
+import { UserContext } from "../App";
+import fetchUserZipLinks from "../utils/fetchUserZipLinks";
 
 const Home = () => {
   const [urlKey, setUrlKey] = useState(undefined);
   const [validUrl, setValidUrl] = useState(true);
+  const { user, setUser } = useContext(UserContext);
 
   // create zipLink function
   const zipLinkClickHandler = async () => {
@@ -16,21 +19,36 @@ const Home = () => {
           method: "post",
           mode: "cors",
           body: JSON.stringify({ url: url }),
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
         });
-        const key = await res.json();
+        const json = await res.json();
         setValidUrl(true);
-        setUrlKey(key.key);
+        setUrlKey(json.key);
       } else {
         setUrlKey(undefined);
         setValidUrl(false);
       }
     } catch (error) {
-      console.log(`Error fetching data: ${error}`);
+      console.error(`Error fetching data: ${error}`);
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const zipLinks = await fetchUserZipLinks();
+      if (zipLinks) {
+        setUser((user) => {
+          const updatedUser = { ...user, zipLinks };
+
+          return updatedUser;
+        });
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -75,13 +93,34 @@ const Home = () => {
             are easy to share online
           </p>
         </div>
-        <div className={styles.infoBox}>
-          <h2>Want more features? Create a free account!</h2>
-          <p>Create custom ZipLinks, view analytics and manage your ZipLinks</p>
-          <a className={styles.btnLink} href="/signup">
-            Create Account
-          </a>
-        </div>
+        {user && user.zipLinks ? (
+          <div className={styles.zipLinksBox}>
+            <h2>Your most recent ZipLinks</h2>
+            <div>
+              {user.zipLinks.map((zipLink) => {
+                return (
+                  <a
+                    className={styles.link}
+                    key={zipLink.key}
+                    href={`${window.location.origin}/${zipLink.key}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >{`${window.location.host}/${zipLink.key}`}</a>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className={styles.infoBox}>
+            <h2>Want more features? Create a free account!</h2>
+            <p>
+              Create custom ZipLinks, view analytics and manage your ZipLinks
+            </p>
+            <a className={styles.btnLink} href="/signup">
+              Create Account
+            </a>
+          </div>
+        )}
       </div>
     </>
   );

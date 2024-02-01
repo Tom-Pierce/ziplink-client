@@ -28,11 +28,16 @@ function App() {
         );
         const json = await res.json();
         if (json.success) {
-          setUser({
-            username: json.user.username,
-            pfp: json.user.pfp,
-            zipLinks: json.user.ziplinks,
-            email: json.user.email,
+          setUser((user) => {
+            const updatedUser = {
+              ...user,
+              username: json.user.username,
+              pfp: json.user.pfp,
+              zipLinks: json.user.ziplinks,
+              email: json.user.email,
+            };
+
+            return updatedUser;
           });
         } else {
           // if request is not successful, remove user data
@@ -50,6 +55,7 @@ function App() {
       <UserContext.Provider
         value={{
           user,
+          setUser,
         }}
       >
         <BrowserRouter>
