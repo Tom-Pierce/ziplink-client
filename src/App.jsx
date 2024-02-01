@@ -30,11 +30,11 @@ function App() {
         if (json.success) {
           setUser((user) => {
             const updatedUser = {
-              ...user,
               username: json.user.username,
               pfp: json.user.pfp,
               zipLinks: json.user.ziplinks,
               email: json.user.email,
+              ...user,
             };
 
             return updatedUser;

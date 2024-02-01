@@ -41,7 +41,10 @@ const Home = () => {
       const zipLinks = await fetchUserZipLinks();
       if (zipLinks) {
         setUser((user) => {
-          const updatedUser = { ...user, zipLinks };
+          const updatedUser = {
+            ...user,
+            zipLinks: zipLinks,
+          };
 
           return updatedUser;
         });
