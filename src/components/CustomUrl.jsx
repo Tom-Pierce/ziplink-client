@@ -24,6 +24,7 @@ const CustomUrl = () => {
         method: "post",
         mode: "cors",
         body: JSON.stringify({ url: url, customKey: customKey }),
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
