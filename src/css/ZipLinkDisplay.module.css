@@ -19,10 +19,14 @@
 .zipLinkInfoBar {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 2fr 1fr 1fr;
   padding: 1rem;
 }
-
+.zipLinkInfoBar a {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .link {
   white-space: nowrap;
 }

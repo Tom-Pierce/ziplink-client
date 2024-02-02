@@ -1,14 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../css/Home.module.css";
 import urlValidator from "../utils/urlValidator";
-import { UserContext } from "../App";
 import fetchUserZipLinks from "../utils/fetchUserZipLinks";
 import ZipLinkDisplay from "./ZipLinkDisplay";
 
 const Home = () => {
   const [urlKey, setUrlKey] = useState(undefined);
   const [validUrl, setValidUrl] = useState(true);
-  const { user, setUser } = useContext(UserContext);
+  const [userZipLinks, setUserZipLinks] = useState();
 
   // create zipLink function
   const zipLinkClickHandler = async () => {
@@ -39,16 +38,9 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const zipLinks = await fetchUserZipLinks();
+      const zipLinks = await fetchUserZipLinks(1, 3);
       if (zipLinks) {
-        setUser((user) => {
-          const updatedUser = {
-            ...user,
-            zipLinks: zipLinks,
-          };
-
-          return updatedUser;
-        });
+        setUserZipLinks(zipLinks);
       }
     };
     fetchData();
@@ -97,9 +89,9 @@ const Home = () => {
             are easy to share online
           </p>
         </div>
-        {user && user.zipLinks ? (
+        {userZipLinks ? (
           <ZipLinkDisplay
-            zipLinks={user.zipLinks}
+            zipLinks={userZipLinks}
             title={"Your most popular ZipLinks"}
           />
         ) : (

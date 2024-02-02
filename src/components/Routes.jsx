@@ -6,6 +6,7 @@ import UnzipUrl from "./UnzipUrl";
 import ViewClicks from "./ViewClicks";
 import ShortUrlRedirect from "./ShortUrlRedirect";
 import Login from "./Login";
+import ZipLinks from "./ZipLinks";
 
 const routes = () => {
   return (
@@ -15,6 +16,7 @@ const routes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/custom" element={<CustomUrl />} />
       <Route path="/unzip" element={<UnzipUrl />} />
+      <Route path="/ziplinks" element={<ZipLinks />} />
       <Route path="/clicks/:paramKey" element={<ViewClicks />} />
       <Route path="/clicks" element={<ViewClicks />} />
       <Route path="/:key" element={<ShortUrlRedirect />} />
