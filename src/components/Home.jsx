@@ -99,6 +99,7 @@ const Home = () => {
         {userZipLinks ? (
           <ZipLinkDisplay
             zipLinks={userZipLinks}
+            setZipLinks={setUserZipLinks}
             title={"Your most popular ZipLinks"}
           />
         ) : (

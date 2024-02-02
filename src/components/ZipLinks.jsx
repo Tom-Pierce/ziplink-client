@@ -21,6 +21,7 @@ const ZipLinks = () => {
         {userZipLinks ? (
           <ZipLinkDisplay
             zipLinks={userZipLinks}
+            setZipLinks={setUserZipLinks}
             title={"View all of your ZipLinks"}
           />
         ) : null}

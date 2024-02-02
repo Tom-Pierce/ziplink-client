@@ -1,7 +1,14 @@
 import styles from "../css/ZipLinkDisplay.module.css";
 import PropTypes from "prop-types";
+import DeleteZipLinkBtn from "./DeleteZipLinkBtn";
 
-const ZipLinkDisplay = ({ zipLinks, title }) => {
+const ZipLinkDisplay = ({ zipLinks, setZipLinks, title }) => {
+  const removeZipLink = (key) => {
+    const updatedZiplinks = zipLinks.filter((ziplink) => ziplink.key !== key);
+    console.log({ updatedZiplinks });
+    setZipLinks(updatedZiplinks);
+  };
+
   return (
     <div className={styles.zipLinkDisplayBox}>
       <h1>{title}</h1>
@@ -28,8 +35,12 @@ const ZipLinkDisplay = ({ zipLinks, title }) => {
               rel="noopener noreferrer"
             >
               {zipLink.url.split("//")[1]}
-            </a>{" "}
+            </a>
             <span>{zipLink.visits.toLocaleString()}</span>
+            <DeleteZipLinkBtn
+              removeZipLink={removeZipLink}
+              urlKey={zipLink.key}
+            />
           </div>
         );
       })}
@@ -39,6 +50,7 @@ const ZipLinkDisplay = ({ zipLinks, title }) => {
 
 ZipLinkDisplay.propTypes = {
   zipLinks: PropTypes.arrayOf(PropTypes.object),
+  setZipLinks: PropTypes.func,
   title: PropTypes.string,
 };
 
