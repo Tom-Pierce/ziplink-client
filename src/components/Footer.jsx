@@ -14,6 +14,10 @@ const Footer = () => {
             <Link to="/custom">Custom ZipLink</Link>
           </li>
           <li>
+            <Link to="/ziplinks">View ZipLinks</Link>
+          </li>
+
+          <li>
             <Link to="/unzip">Unzip Link</Link>
           </li>
           <li>

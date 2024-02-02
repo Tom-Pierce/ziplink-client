@@ -8,6 +8,9 @@ const ProfileDropdown = forwardRef(function ProfileDropdown(
   { active, setDropdownOpen, profilePictureRef },
   ref
 ) {
+  const profileClickHandler = () => {
+    setDropdownOpen(false);
+  };
   useEffect(() => {
     const clickHandler = (e) => {
       if (
@@ -31,12 +34,25 @@ const ProfileDropdown = forwardRef(function ProfileDropdown(
     >
       <ul>
         <li className={styles.dropdownOption}>
-          <Link onClick={logout} to="/">
+          <Link
+            onClick={() => {
+              logout();
+              profileClickHandler();
+            }}
+            to="/"
+          >
             Logout
           </Link>
         </li>
         <li className={styles.dropdownOption}>
-          <Link to="/custom">Custom ZipLink</Link>
+          <Link onClick={profileClickHandler} to="/ziplinks">
+            My ZipLinks
+          </Link>
+        </li>
+        <li className={styles.dropdownOption}>
+          <Link onClick={profileClickHandler} to="/custom">
+            Custom ZipLink
+          </Link>
         </li>
       </ul>
     </div>

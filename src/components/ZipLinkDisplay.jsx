@@ -29,7 +29,7 @@ const ZipLinkDisplay = ({ zipLinks, title }) => {
             >
               {zipLink.url.split("//")[1]}
             </a>{" "}
-            <span>{zipLink.visits}</span>
+            <span>{zipLink.visits.toLocaleString()}</span>
           </div>
         );
       })}
