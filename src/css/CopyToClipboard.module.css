@@ -1,0 +1,5 @@
+.copyToClipboard {
+  background-color: var(--primary);
+  margin-left: 0.25rem;
+  cursor: pointer;
+}

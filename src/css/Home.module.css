@@ -78,4 +78,6 @@
   font-weight: bold;
   font-size: 1.25rem;
   margin: 1rem;
+  display: flex;
+  justify-content: center;
 }

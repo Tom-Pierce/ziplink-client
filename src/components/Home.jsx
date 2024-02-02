@@ -3,6 +3,7 @@ import styles from "../css/Home.module.css";
 import urlValidator from "../utils/urlValidator";
 import fetchUserZipLinks from "../utils/fetchUserZipLinks";
 import ZipLinkDisplay from "./ZipLinkDisplay";
+import CopyToClipboard from "./CopyToClipboard";
 
 const Home = () => {
   const [urlKey, setUrlKey] = useState(undefined);
@@ -15,6 +16,7 @@ const Home = () => {
     const url = urlValidator(document.getElementById("longUrlInput").value);
     try {
       if (url) {
+        setUrlKey(undefined);
         const res = await fetch(`${import.meta.env.VITE_API_URL}api/url`, {
           method: "post",
           mode: "cors",
@@ -75,14 +77,19 @@ const Home = () => {
             </p>
           )}
           {urlKey ? (
-            <p className={styles.zippedLink}>
-              {"Zipped Link: "}
-              <a
-                href={`${window.location.origin}/${urlKey}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >{`${window.location.host}/${urlKey}`}</a>
-            </p>
+            <div className={styles.zippedLink}>
+              <span>
+                {"Zipped Link: "}
+                <a
+                  href={`${window.location.origin}/${urlKey}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >{`${window.location.host}/${urlKey}`}</a>
+              </span>
+              <CopyToClipboard
+                textToCopy={`${window.location.host}/${urlKey}`}
+              />
+            </div>
           ) : null}
           <p>
             ZipLink is a free tool to shorten URLs and generate short links that
