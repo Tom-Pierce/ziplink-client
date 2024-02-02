@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const ZipLinkDisplay = ({ zipLinks, title }) => {
   return (
     <div className={styles.zipLinkDisplayBox}>
-      <h2>{title}</h2>
+      <h1>{title}</h1>
       <div className={styles.zipLinkInfoBar}>
         <span>ZipLink</span>
         <span>Redirect</span>
