@@ -2,7 +2,7 @@ const fetchUserZipLinks = async () => {
   // fetch user ziplinks
   try {
     const res = await fetch(
-      `${import.meta.env.VITE_API_URL}api/user/zipLinks`,
+      `${import.meta.env.VITE_API_URL}api/user/zipLinks?page=1&limit=3`,
       {
         method: "GET",
         mode: "cors",

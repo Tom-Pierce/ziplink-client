@@ -3,6 +3,7 @@ import styles from "../css/Home.module.css";
 import urlValidator from "../utils/urlValidator";
 import { UserContext } from "../App";
 import fetchUserZipLinks from "../utils/fetchUserZipLinks";
+import ZipLinkDisplay from "./ZipLinkDisplay";
 
 const Home = () => {
   const [urlKey, setUrlKey] = useState(undefined);
@@ -97,22 +98,10 @@ const Home = () => {
           </p>
         </div>
         {user && user.zipLinks ? (
-          <div className={styles.zipLinksBox}>
-            <h2>Your most recent ZipLinks</h2>
-            <div>
-              {user.zipLinks.map((zipLink) => {
-                return (
-                  <a
-                    className={styles.link}
-                    key={zipLink.key}
-                    href={`${window.location.origin}/${zipLink.key}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >{`${window.location.host}/${zipLink.key}`}</a>
-                );
-              })}
-            </div>
-          </div>
+          <ZipLinkDisplay
+            zipLinks={user.zipLinks}
+            title={"Your most popular ZipLinks"}
+          />
         ) : (
           <div className={styles.infoBox}>
             <h2>Want more features? Create a free account!</h2>
