@@ -1,8 +1,17 @@
 import styles from "../css/ZipLinkDisplay.module.css";
 import PropTypes from "prop-types";
 import DeleteZipLinkBtn from "./DeleteZipLinkBtn";
+import chevronLeft from "../assets/chevronLeft.svg";
+import chevronRight from "../assets/chevronRight.svg";
 
-const ZipLinkDisplay = ({ zipLinks, setZipLinks, title }) => {
+const ZipLinkDisplay = ({
+  zipLinks,
+  setZipLinks,
+  title,
+  count,
+  page,
+  setPage,
+}) => {
   const removeZipLink = (key) => {
     const updatedZiplinks = zipLinks.filter((ziplink) => ziplink.key !== key);
     console.log({ updatedZiplinks });
@@ -48,6 +57,28 @@ const ZipLinkDisplay = ({ zipLinks, setZipLinks, title }) => {
               </div>
             );
           })}
+
+          {/* controls for moving through pages of ziplinks, only render if count is sent */}
+          {count !== undefined ? (
+            <div className={styles.zipLinkPageControls}>
+              {console.log({ page, count })}
+              <button
+                onClick={() => {
+                  if (page > 1) setPage(page - 1);
+                }}
+              >
+                <img src={chevronLeft} alt="arrow left" />
+              </button>
+              {zipLinks.length + (page - 1) * 10}/{count}
+              <button
+                onClick={() => {
+                  if (page < Math.ceil(count / 10)) setPage(page + 1);
+                }}
+              >
+                <img src={chevronRight} alt="arrow right" />
+              </button>
+            </div>
+          ) : null}
         </>
       )}
     </div>
@@ -58,6 +89,9 @@ ZipLinkDisplay.propTypes = {
   zipLinks: PropTypes.arrayOf(PropTypes.object),
   setZipLinks: PropTypes.func,
   title: PropTypes.string,
+  count: PropTypes.number,
+  page: PropTypes.number,
+  setPage: PropTypes.func,
 };
 
 export default ZipLinkDisplay;

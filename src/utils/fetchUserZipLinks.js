@@ -18,7 +18,7 @@ const fetchUserZipLinks = async (page, limit) => {
       return null;
     }
     const json = await res.json();
-    return json.zipLinks;
+    return { zipLinks: json.zipLinks, count: json.count };
   } catch (error) {
     console.error("Error fetching user data:", error);
   }

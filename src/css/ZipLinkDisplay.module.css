@@ -30,6 +30,17 @@
   text-overflow: ellipsis;
 }
 
+.zipLinkPageControls {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.zipLinkPageControls button {
+  background-color: var(--primary);
+  cursor: pointer;
+}
+
 .link {
   white-space: nowrap;
 }

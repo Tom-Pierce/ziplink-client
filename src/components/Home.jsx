@@ -40,7 +40,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const zipLinks = await fetchUserZipLinks(1, 3);
+      const { zipLinks } = await fetchUserZipLinks(1, 3);
       if (zipLinks) {
         setUserZipLinks(zipLinks);
       }

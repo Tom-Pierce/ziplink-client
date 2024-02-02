@@ -4,16 +4,19 @@ import fetchUserZipLinks from "../utils/fetchUserZipLinks";
 
 const ZipLinks = () => {
   const [userZipLinks, setUserZipLinks] = useState();
+  const [page, setPage] = useState(1);
+  const [zipLinkCount, setZipLinkCount] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
-      const zipLinks = await fetchUserZipLinks(1, 10);
-      if (zipLinks) {
+      const { zipLinks, count } = await fetchUserZipLinks(page, 10);
+      if (zipLinks && count) {
+        setZipLinkCount(count);
         setUserZipLinks(zipLinks);
       }
     };
     fetchData();
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -23,6 +26,9 @@ const ZipLinks = () => {
             zipLinks={userZipLinks}
             setZipLinks={setUserZipLinks}
             title={"View all of your ZipLinks"}
+            count={zipLinkCount}
+            setPage={setPage}
+            page={page}
           />
         ) : null}
       </div>
