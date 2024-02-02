@@ -66,6 +66,9 @@ const ZipLinkDisplay = ({ title, limit, isHomePage, reRender }) => {
                       removeZipLink={removeZipLink}
                       urlKey={zipLink.key}
                       fetchData={fetchData}
+                      page={page}
+                      setPage={setPage}
+                      zipLinkCount={zipLinkCount}
                     />
                   </div>
                 );
@@ -73,7 +76,7 @@ const ZipLinkDisplay = ({ title, limit, isHomePage, reRender }) => {
 
               {isHomePage ? null : (
                 <>
-                  {/* controls for moving through pages of ziplinks, only render if count is sent */}
+                  {/* controls for moving through pages of ziplinks, only render if its not the home page */}
                   {zipLinkCount !== undefined ? (
                     <div className={styles.zipLinkPageControls}>
                       <button
