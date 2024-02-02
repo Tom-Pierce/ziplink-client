@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import DeleteSVG from "../assets/delete.svg";
 import styles from "../css/DeleteZipLinkBtn.module.css";
 
-const DeleteZipLinkBtn = ({ urlKey, removeZipLink }) => {
+const DeleteZipLinkBtn = ({ urlKey, removeZipLink, fetchData }) => {
   const deleteHandler = async (key) => {
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}api/${key}`, {
@@ -15,6 +15,7 @@ const DeleteZipLinkBtn = ({ urlKey, removeZipLink }) => {
       });
       if (res.status === 204) {
         removeZipLink(key);
+        fetchData();
       }
     } catch (error) {
       console.log("Server error: ", error);
@@ -36,6 +37,7 @@ const DeleteZipLinkBtn = ({ urlKey, removeZipLink }) => {
 DeleteZipLinkBtn.propTypes = {
   urlKey: PropTypes.string,
   removeZipLink: PropTypes.func,
+  fetchData: PropTypes.func,
 };
 
 export default DeleteZipLinkBtn;

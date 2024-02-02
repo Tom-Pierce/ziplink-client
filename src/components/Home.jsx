@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import styles from "../css/Home.module.css";
 import urlValidator from "../utils/urlValidator";
-import fetchUserZipLinks from "../utils/fetchUserZipLinks";
 import ZipLinkDisplay from "./ZipLinkDisplay";
 import CopyToClipboard from "./CopyToClipboard";
+import { UserContext } from "../App";
 
 const Home = () => {
   const [urlKey, setUrlKey] = useState(undefined);
   const [validUrl, setValidUrl] = useState(true);
-  const [userZipLinks, setUserZipLinks] = useState();
+  const [reRender, setReRender] = useState(false);
+  const { user } = useContext(UserContext);
 
   // create zipLink function
   const zipLinkClickHandler = async () => {
@@ -29,6 +30,7 @@ const Home = () => {
         const json = await res.json();
         setValidUrl(true);
         setUrlKey(json.key);
+        setReRender(!reRender);
       } else {
         setUrlKey(undefined);
         setValidUrl(false);
@@ -37,16 +39,6 @@ const Home = () => {
       console.error(`Error fetching data: ${error}`);
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const { zipLinks } = await fetchUserZipLinks(1, 3);
-      if (zipLinks) {
-        setUserZipLinks(zipLinks);
-      }
-    };
-    fetchData();
-  }, [urlKey]);
 
   return (
     <>
@@ -96,11 +88,12 @@ const Home = () => {
             are easy to share online
           </p>
         </div>
-        {userZipLinks ? (
+        {user ? (
           <ZipLinkDisplay
-            zipLinks={userZipLinks}
-            setZipLinks={setUserZipLinks}
             title={"Your most popular ZipLinks"}
+            limit={3}
+            isHomePage={true}
+            reRender={reRender}
           />
         ) : (
           <div className={styles.infoBox}>
