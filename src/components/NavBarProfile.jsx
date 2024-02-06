@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from "react";
 import { UserContext } from "../App";
 import styles from "../css/NavBarProfile.module.css";
 import ProfileDropdown from "./ProfileDropdown";
+import DefaultPfp from "../assets/default-pfp.png";
 
 const NavBarProfile = () => {
   const { user } = useContext(UserContext);
@@ -17,6 +18,9 @@ const NavBarProfile = () => {
         alt="user profile picture"
         onClick={() => setDropdownOpen(!dropdownOpen)}
         ref={profilePictureRef}
+        onError={(e) => {
+          e.target.src = DefaultPfp;
+        }}
         referrerPolicy="no-referrer"
       />
       <ProfileDropdown
