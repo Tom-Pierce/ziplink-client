@@ -29,6 +29,7 @@ const ViewClicks = () => {
         {
           method: "get",
           mode: "cors",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
