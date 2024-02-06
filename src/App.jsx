@@ -10,10 +10,17 @@ export const UserContext = createContext(null);
 
 function App() {
   const [user, setUser] = useState(undefined);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    if (queryParams.get("successfulLogin") === "true") setLoggedIn(true);
+  }, []);
 
   // fetch user data
   useEffect(() => {
     const fetchData = async () => {
+      console.log("logging in");
       try {
         const res = await fetch(
           `${import.meta.env.VITE_API_URL}api/auth/userInfo`,
@@ -26,6 +33,7 @@ function App() {
             },
           }
         );
+        if (res.status === 401) return;
         const json = await res.json();
         if (json.success) {
           setUser((user) => {
@@ -47,8 +55,8 @@ function App() {
         console.error("Error fetching user data:", error);
       }
     };
-    if (user) fetchData();
-  }, []);
+    if (loggedIn) fetchData();
+  }, [loggedIn]);
 
   return (
     <>
