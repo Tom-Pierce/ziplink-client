@@ -47,7 +47,7 @@ function App() {
         console.error("Error fetching user data:", error);
       }
     };
-    fetchData();
+    if (user) fetchData();
   }, []);
 
   return (
