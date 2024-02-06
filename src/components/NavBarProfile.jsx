@@ -17,6 +17,7 @@ const NavBarProfile = () => {
         alt="user profile picture"
         onClick={() => setDropdownOpen(!dropdownOpen)}
         ref={profilePictureRef}
+        referrerPolicy="no-referrer"
       />
       <ProfileDropdown
         active={dropdownOpen ? true : false}
