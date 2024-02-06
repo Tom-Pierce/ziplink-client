@@ -7,6 +7,7 @@ import ViewClicks from "./ViewClicks";
 import ShortUrlRedirect from "./ShortUrlRedirect";
 import Login from "./Login";
 import ZipLinks from "./ZipLinks";
+import ProtectedRoute from "./ProtectedRoute";
 
 const routes = () => {
   return (
@@ -14,11 +15,39 @@ const routes = () => {
       <Route path="/" exact element={<Home />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/custom" element={<CustomUrl />} />
+      <Route
+        path="/custom"
+        element={
+          <ProtectedRoute redirectPath={"/login"}>
+            <CustomUrl />
+          </ProtectedRoute>
+        }
+      />
       <Route path="/unzip" element={<UnzipUrl />} />
-      <Route path="/ziplinks" element={<ZipLinks />} />
-      <Route path="/clicks/:paramKey" element={<ViewClicks />} />
-      <Route path="/clicks" element={<ViewClicks />} />
+      <Route
+        path="/ziplinks"
+        element={
+          <ProtectedRoute redirectPath={"/login"}>
+            <ZipLinks />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/clicks/:paramKey"
+        element={
+          <ProtectedRoute redirectPath={"/login"}>
+            <ViewClicks />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/clicks"
+        element={
+          <ProtectedRoute redirectPath={"/login"}>
+            <ViewClicks />
+          </ProtectedRoute>
+        }
+      />
       <Route path="/:key" element={<ShortUrlRedirect />} />
     </Routes>
   );
