@@ -6,7 +6,7 @@ const SignUp = () => {
   const [errorMsgs, setErrorMsgs] = useState([]);
 
   const googleClickHandler = () => {
-    window.open("http://localhost:3000/api/auth/google", "_self");
+    window.open(`${import.meta.env.VITE_API_URL}api/auth/google`, "_self");
   };
 
   const localClickHandler = async (e) => {
