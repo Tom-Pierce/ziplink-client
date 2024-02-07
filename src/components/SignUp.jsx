@@ -1,19 +1,51 @@
 import styles from "../css/SignUp.module.css";
 import googleLogo from "../assets/google_logo.png";
-
-const googleClickHandler = () => {
-  window.open("http://localhost:3000/api/auth/google", "_self");
-};
+import { useState } from "react";
 
 const SignUp = () => {
+  const [errorMsgs, setErrorMsgs] = useState([]);
+
+  const googleClickHandler = () => {
+    window.open("http://localhost:3000/api/auth/google", "_self");
+  };
+
+  const localClickHandler = async (e) => {
+    e.preventDefault();
+    const form = document.getElementById("signUpForm");
+    const email = form.elements["email"].value;
+    const password = form.elements["password"].value;
+    const confirmPassword = form.elements["confirmPassword"].value;
+
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}api/auth/local/signup`,
+      {
+        method: "post",
+        mode: "cors",
+        body: JSON.stringify({ email, password, confirmPassword }),
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (res.status === 201)
+      window.location.href = `${window.location.protocol}//${window.location.host}/?successfulLogin=true`;
+
+    if (res.status === 400) {
+      const json = await res.json();
+      setErrorMsgs(json);
+    }
+  };
+
   return (
     <>
       <div className="main">
         <div className={styles.signUpBox}>
           <h1>Sign up now!</h1>
-          <div className={styles.controls}>
-            {/* currently can only sign up/in with google oauth2.0... email/password inputs created for the future */}
-            <div className={styles.inputsWrapper}>
+          <form id="signUpForm">
+            <div className={styles.controls}>
+              {/* currently can only sign up/in with google oauth2.0... email/password inputs created for the future */}
               <input
                 type="email"
                 id="emailInput"
@@ -21,15 +53,6 @@ const SignUp = () => {
                 className={styles.textInput}
                 placeholder="Email"
               />
-              <input
-                type="text"
-                id="usernameInput"
-                name="username"
-                className={styles.textInput}
-                placeholder="Username"
-              />
-            </div>
-            <div className={styles.inputsWrapper}>
               <input
                 type="password"
                 id="passwordInput"
@@ -44,13 +67,32 @@ const SignUp = () => {
                 className={styles.textInput}
                 placeholder="Confirm Password"
               />
+              {errorMsgs.length !== 0 ? (
+                <ul>
+                  {errorMsgs.map((msg, index) => {
+                    return (
+                      <li
+                        className={styles.errorMessage}
+                        key={`error-msg-${index}`}
+                      >
+                        {msg}
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : null}
+
+              <div>
+                <button
+                  className={styles.btn}
+                  type="submit"
+                  onClick={localClickHandler}
+                >
+                  Sign up
+                </button>
+              </div>
             </div>
-            <div>
-              <button className={styles.btn} type="submit">
-                Sign up
-              </button>
-            </div>
-          </div>
+          </form>
           <p>or</p>
           <button
             className={styles.authWithProviderBtn}

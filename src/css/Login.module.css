@@ -45,3 +45,10 @@
   display: inline;
   height: 2rem;
 }
+
+.errorMessage {
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 1rem;
+}

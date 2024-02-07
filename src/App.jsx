@@ -20,7 +20,6 @@ function App() {
   // fetch user data
   useEffect(() => {
     const fetchData = async () => {
-      console.log("logging in");
       try {
         const res = await fetch(
           `${import.meta.env.VITE_API_URL}api/auth/userInfo`,

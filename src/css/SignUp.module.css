@@ -10,9 +10,9 @@
   margin-bottom: 1rem;
 }
 
-.inputsWrapper {
+.controls {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .controls .textInput {
@@ -22,7 +22,6 @@
   border: 2px solid var(--text);
   margin: 0.5rem;
   color: var(--text);
-  max-width: 40%;
 }
 
 .controls .btn {
@@ -50,4 +49,11 @@
 .authWithProviderBtn img {
   display: inline;
   height: 2rem;
+}
+
+.errorMessage {
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0.25rem;
 }
