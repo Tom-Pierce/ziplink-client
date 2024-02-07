@@ -13,9 +13,25 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    if (queryParams.get("successfulLogin") === "true") setLoggedIn(true);
-  }, []);
+    const fetchData = async () => {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}api/auth/isAuthenticated`,
+        {
+          method: "GET",
+          mode: "cors",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const { authenticated } = await res.json();
+      if (authenticated) setLoggedIn(true);
+      else setLoggedIn(false);
+    };
+    fetchData();
+  }),
+    [];
 
   // fetch user data
   useEffect(() => {

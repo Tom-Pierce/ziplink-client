@@ -30,7 +30,7 @@ const SignUp = () => {
     );
 
     if (res.status === 201)
-      window.location.href = `${window.location.protocol}//${window.location.host}/?successfulLogin=true`;
+      window.location.href = `${window.location.protocol}//${window.location.host}/`;
 
     if (res.status === 400) {
       const json = await res.json();

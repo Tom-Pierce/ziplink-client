@@ -30,7 +30,7 @@ const Login = () => {
     );
 
     if (res.status === 200)
-      window.location.href = `${window.location.protocol}//${window.location.host}/?successfulLogin=true`;
+      window.location.href = `${window.location.protocol}//${window.location.host}/`;
     if (res.status === 401) {
       const { message } = await res.json();
       setErrorMsg(message);
