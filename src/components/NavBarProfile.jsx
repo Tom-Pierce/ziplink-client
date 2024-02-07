@@ -10,11 +10,12 @@ const NavBarProfile = () => {
   const dropdownRef = useRef(null);
   const profilePictureRef = useRef(null);
 
+  console.log(user.pfp);
   return (
     <div className={styles.profile}>
       <img
         className={styles.profilePicture}
-        src={user.pfp}
+        src={user.pfp ? user.pfp : DefaultPfp}
         alt="user profile picture"
         onClick={() => setDropdownOpen(!dropdownOpen)}
         ref={profilePictureRef}
