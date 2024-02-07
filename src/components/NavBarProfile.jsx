@@ -10,7 +10,6 @@ const NavBarProfile = () => {
   const dropdownRef = useRef(null);
   const profilePictureRef = useRef(null);
 
-  console.log(user.pfp);
   return (
     <div className={styles.profile}>
       <img
