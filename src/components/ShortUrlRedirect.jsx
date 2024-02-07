@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styles from "../css/ShortUrlRedirect.module.css";
 import InvalidKey from "./InvalidKey";
+import Loader from "./Loader";
 
 const ShortUrlRedirect = () => {
   const [url, setUrl] = useState(null);
@@ -30,18 +30,7 @@ const ShortUrlRedirect = () => {
   useEffect(() => {
     if (url) window.location.replace(url);
   }, [url]);
-  return (
-    <>
-      {validKey === false ? (
-        <InvalidKey />
-      ) : (
-        <div className={styles.wrapper}>
-          {" "}
-          <div className={styles.loader}></div>
-        </div>
-      )}
-    </>
-  );
+  return <>{validKey === false ? <InvalidKey /> : <Loader />}</>;
 };
 
 export default ShortUrlRedirect;

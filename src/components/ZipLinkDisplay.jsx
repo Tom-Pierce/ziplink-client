@@ -5,18 +5,21 @@ import chevronLeft from "../assets/chevronLeft.svg";
 import chevronRight from "../assets/chevronRight.svg";
 import { useEffect, useState } from "react";
 import fetchUserZipLinks from "../utils/fetchUserZipLinks";
+import Loader from "./Loader";
 
 const ZipLinkDisplay = ({ title, limit, isHomePage, reRender }) => {
   const [zipLinks, setZipLinks] = useState([]);
   const [zipLinkCount, setZipLinkCount] = useState();
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
     const { zipLinks, count } = await fetchUserZipLinks(page, limit);
-    if (zipLinks !== undefined && count) {
+    if (zipLinks !== undefined && count !== undefined) {
+      setIsLoading(false);
       setZipLinkCount(count);
       setZipLinks(zipLinks);
-    }
+    } else setIsLoading(true);
   };
 
   useEffect(() => {
@@ -33,7 +36,9 @@ const ZipLinkDisplay = ({ title, limit, isHomePage, reRender }) => {
       {zipLinks ? (
         <>
           <h1>{title}</h1>
-          {zipLinks.length === 0 ? (
+          {isLoading ? (
+            <Loader />
+          ) : zipLinks.length === 0 ? (
             <p>You have not created any ZipLinks yet...</p>
           ) : (
             <>

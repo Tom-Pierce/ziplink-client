@@ -1,10 +1,13 @@
 .wrapper {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 100%;
 }
+
 .loader {
+  margin: 2rem;
   border: 8px solid var(--secondary);
   border-top: 8px solid var(--accent);
   border-radius: 50%;
