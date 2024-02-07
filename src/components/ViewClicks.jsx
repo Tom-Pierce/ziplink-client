@@ -65,7 +65,7 @@ const ViewClicks = () => {
                 type="submit"
                 onClick={clickHandler}
               >
-                Zip Link
+                Get clicks
               </button>
             </div>
           </form>
