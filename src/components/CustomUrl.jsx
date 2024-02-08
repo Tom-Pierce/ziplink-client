@@ -1,6 +1,7 @@
 import { useState } from "react";
 import urlValidator from "../utils/urlValidator";
 import styles from "../css/CustomUrl.module.css";
+import CopyToClipboard from "./CopyToClipboard";
 
 const CustomUrl = () => {
   const [urlKey, setUrlKey] = useState(undefined);
@@ -92,14 +93,19 @@ const CustomUrl = () => {
             <p className={styles.errorMessage}>Custom URL already in use</p>
           )}
           {urlKey ? (
-            <p className={styles.zippedLink}>
-              {"Zipped Link: "}
-              <a
-                href={`${window.location.origin}/${urlKey}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >{`${window.location.host}/${urlKey}`}</a>
-            </p>
+            <div className={styles.zippedLink}>
+              <span>
+                {"Zipped Link: "}
+                <a
+                  href={`${window.location.origin}/${urlKey}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >{`${window.location.host}/${urlKey}`}</a>
+              </span>
+              <CopyToClipboard
+                textToCopy={`${window.location.host}/${urlKey}`}
+              />
+            </div>
           ) : null}
         </div>
       </div>
