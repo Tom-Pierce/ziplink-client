@@ -34,7 +34,7 @@ const UnzipUrl = () => {
   return (
     <>
       <div className="main">
-        <div className={styles.unzipUrlBox}>
+        <div className={`${styles.unzipUrlBox} infoBox`}>
           <form id="urlForm" className={styles.urlForm}>
             <h1>Paste the ZipLink below to see where it redirects</h1>
             <div>

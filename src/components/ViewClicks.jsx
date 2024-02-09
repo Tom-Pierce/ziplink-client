@@ -46,7 +46,7 @@ const ViewClicks = () => {
   return (
     <>
       <div className="main">
-        <div className={styles.clickCounterBox}>
+        <div className={`${styles.clickCounterBox} infoBox`}>
           <form id="urlForm" className={styles.urlForm}>
             <h1>Paste the ZipLink to track how many clicks it received</h1>
             <div className={styles.controls}>

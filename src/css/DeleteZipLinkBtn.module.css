@@ -2,4 +2,5 @@
   background-color: var(--primary);
   margin-left: 0.25rem;
   cursor: pointer;
+  width: 1.25rem;
 }

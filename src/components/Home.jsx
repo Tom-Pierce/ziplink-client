@@ -43,7 +43,7 @@ const Home = () => {
   return (
     <>
       <div className="main">
-        <div className={styles.urlZipperBox}>
+        <div className={`${styles.urlZipperBox} infoBox`}>
           <form id="urlForm" className={styles.urlForm}>
             <h1>Paste the URL to be zipped below</h1>
             <div className={styles.controls}>
@@ -96,7 +96,7 @@ const Home = () => {
             reRender={reRender}
           />
         ) : (
-          <div className={styles.infoBox}>
+          <div className={`${styles.infoBox} infoBox`}>
             <h2>Want more features? Create a free account!</h2>
             <p>
               Create custom ZipLinks, view analytics and manage your ZipLinks

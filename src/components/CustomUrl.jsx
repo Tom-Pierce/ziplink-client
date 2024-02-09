@@ -47,7 +47,7 @@ const CustomUrl = () => {
   return (
     <>
       <div className="main">
-        <div className={styles.customUrlBox}>
+        <div className={`${styles.customUrlBox} infoBox`}>
           <form id="urlForm" className={styles.urlForm}>
             <h1>Paste the URL to be zipped below</h1>
             <div className={styles.controls}>

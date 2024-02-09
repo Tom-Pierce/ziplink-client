@@ -32,7 +32,7 @@ const ZipLinkDisplay = ({ title, limit, isHomePage, reRender }) => {
   };
 
   return (
-    <div className={styles.zipLinkDisplayBox}>
+    <div className={`${styles.zipLinkDisplayBox} infoBox`}>
       {zipLinks ? (
         <>
           <h1>{title}</h1>

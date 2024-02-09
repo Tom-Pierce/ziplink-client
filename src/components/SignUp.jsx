@@ -41,7 +41,7 @@ const SignUp = () => {
   return (
     <>
       <div className="main">
-        <div className={styles.signUpBox}>
+        <div className={`${styles.signUpBox} infoBox`}>
           <h1>Sign up now!</h1>
           <form id="signUpForm">
             <div className={styles.controls}>
