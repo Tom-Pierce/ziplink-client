@@ -2,13 +2,8 @@
 }
 
 .controls .urlInput {
-  padding: 0.5rem;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
-  margin: 1rem 0 1rem 1rem;
-  background-color: var(--primary);
-  border: 2px solid var(--text);
-  color: var(--text);
 }
 
 .controls .btn {

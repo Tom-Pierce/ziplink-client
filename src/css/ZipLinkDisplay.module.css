@@ -1,6 +1,3 @@
-.zipLinkDisplayBox {
-}
-
 .zipLinkInfoBar:not(:first-child) {
   border-bottom: 1px solid var(--background);
 }

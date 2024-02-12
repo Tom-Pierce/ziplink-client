@@ -45,26 +45,25 @@ const SignUp = () => {
           <h1>Sign up now!</h1>
           <form id="signUpForm">
             <div className={styles.controls}>
-              {/* currently can only sign up/in with google oauth2.0... email/password inputs created for the future */}
               <input
                 type="email"
                 id="emailInput"
                 name="email"
-                className={styles.textInput}
+                className={`${styles.textInput} textInput`}
                 placeholder="Email"
               />
               <input
                 type="password"
                 id="passwordInput"
                 name="password"
-                className={styles.textInput}
+                className={`${styles.textInput} textInput`}
                 placeholder="Password"
               />
               <input
                 type="password"
                 id="confirmPasswordInput"
                 name="confirmPassword"
-                className={styles.textInput}
+                className={`${styles.textInput} textInput`}
                 placeholder="Confirm Password"
               />
               {errorMsgs.length !== 0 ? (

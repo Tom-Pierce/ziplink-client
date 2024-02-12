@@ -43,19 +43,18 @@ const Login = () => {
           <h1>Log in</h1>
           <form id="signUpForm">
             <div className={styles.controls}>
-              {/* currently can only login with google oauth2.0... email/password inputs created for the future */}
               <input
                 type="email"
                 id="emailInput"
                 name="email"
-                className={styles.textInput}
+                className={`${styles.textInput} textInput`}
                 placeholder="Email"
               />
               <input
                 type="password"
                 id="passwordInput"
                 name="password"
-                className={styles.textInput}
+                className={`${styles.textInput} textInput`}
                 placeholder="Password"
               />
               <div>

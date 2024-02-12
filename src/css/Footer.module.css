@@ -1,12 +1,11 @@
 .footer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin-top: auto;
   padding: 1rem;
   border-top: 2px solid var(--primary);
-  gap: 1rem;
 }
 
 .footer a {

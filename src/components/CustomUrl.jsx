@@ -55,7 +55,7 @@ const CustomUrl = () => {
                 type="text"
                 id="longUrlInput"
                 name="url"
-                className={styles.urlInput}
+                className={`${styles.urlInput} textInput`}
                 placeholder="Enter URL here"
               />
 

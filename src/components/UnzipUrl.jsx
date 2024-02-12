@@ -43,7 +43,7 @@ const UnzipUrl = () => {
                   type="text"
                   id="zipLinkInput"
                   name="url"
-                  className={styles.urlInput}
+                  className={`${styles.urlInput} textInput`}
                   placeholder="Enter zipped URL here"
                 />
                 <button
