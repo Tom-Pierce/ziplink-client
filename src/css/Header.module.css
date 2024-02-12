@@ -23,3 +23,16 @@
   position: absolute;
   right: 2rem;
 }
+
+@media only screen and (max-width: 400px) {
+  .header {
+    padding-top: 1rem;
+    justify-content: start;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .authBar {
+    right: 1rem;
+  }
+}

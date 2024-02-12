@@ -6,3 +6,9 @@
 .profilePicture:hover {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 400px) {
+  .profilePicture {
+    height: 2rem;
+  }
+}
