@@ -64,7 +64,7 @@ const CustomUrl = () => {
                   type="text"
                   id="customKeyInput"
                   name="customKey"
-                  className={styles.customKeyInput}
+                  className={`${styles.customKeyInput} textInput`}
                   placeholder="Enter custom URL here"
                   required
                 />
