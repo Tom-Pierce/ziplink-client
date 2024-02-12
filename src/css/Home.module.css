@@ -13,22 +13,9 @@
 }
 
 .controls .urlInput {
-  width: 100%;
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
 }
 
 .controls .btn {
-  color: var(--text);
-  font-weight: 700;
-  background-color: var(--secondary);
-  padding: 0.5rem;
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-  border: 2px solid var(--text);
-  border-left: 0px;
-  margin: 1rem 0;
-  white-space: nowrap;
 }
 
 .btnLink {

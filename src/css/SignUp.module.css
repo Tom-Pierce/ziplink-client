@@ -11,14 +11,6 @@
 }
 
 .controls .btn {
-  color: var(--text);
-  font-weight: 700;
-  background-color: var(--secondary);
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  border: 2px solid var(--text);
-  margin: 1rem 0;
-  white-space: nowrap;
 }
 
 .authWithProviderBtn {

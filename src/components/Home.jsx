@@ -55,7 +55,7 @@ const Home = () => {
                 placeholder="Enter URL here"
               />
               <button
-                className={styles.btn}
+                className={`${styles.btn} btn`}
                 type="submit"
                 onClick={zipLinkClickHandler}
               >

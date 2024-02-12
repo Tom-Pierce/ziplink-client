@@ -48,7 +48,7 @@ const UnzipUrl = () => {
                 />
                 <button
                   type="submit"
-                  className={styles.btn}
+                  className={`${styles.btn} btn`}
                   onClick={clickHandler}
                 >
                   Unzip

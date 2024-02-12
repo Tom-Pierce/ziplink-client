@@ -52,6 +52,16 @@ a {
   color: var(--text);
 }
 
+.btn {
+  color: var(--text);
+  font-weight: 700;
+  background-color: var(--secondary);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 2px solid var(--text);
+  white-space: nowrap;
+}
+
 @media only screen and (max-width: 800px) {
   body .infoBox {
     padding: 2rem 2rem;

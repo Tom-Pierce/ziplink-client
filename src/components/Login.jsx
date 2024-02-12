@@ -62,7 +62,7 @@ const Login = () => {
                   <p className={styles.errorMessage}>{errorMsg}</p>
                 ) : null}
                 <button
-                  className={styles.btn}
+                  className={`${styles.btn} btn`}
                   type="submit"
                   onClick={localClickHandler}
                 >

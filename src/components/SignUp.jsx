@@ -83,7 +83,7 @@ const SignUp = () => {
 
               <div>
                 <button
-                  className={styles.btn}
+                  className={`${styles.btn} btn`}
                   type="submit"
                   onClick={localClickHandler}
                 >

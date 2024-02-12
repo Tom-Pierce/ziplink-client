@@ -61,7 +61,7 @@ const ViewClicks = () => {
                 }
               />
               <button
-                className={styles.btn}
+                className={`${styles.btn} btn`}
                 type="submit"
                 onClick={clickHandler}
               >
