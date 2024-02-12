@@ -20,6 +20,11 @@
 .menu {
   display: flex;
   gap: 4rem;
+  justify-content: space-around;
+}
+
+.menu li {
+  text-align: center;
 }
 
 .logo {
@@ -46,6 +51,7 @@
 
   .menu li {
     padding: 0.25rem 0;
+    text-align: left;
   }
   .menu :not(:first-child) {
     border-top: 1px solid var(--primary);
