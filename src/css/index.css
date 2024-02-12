@@ -65,7 +65,7 @@ a {
   margin: 1rem 0;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 650) {
   body .infoBox {
     padding: 2rem 2rem;
   }
