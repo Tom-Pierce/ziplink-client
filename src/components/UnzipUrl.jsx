@@ -37,23 +37,21 @@ const UnzipUrl = () => {
         <div className={`${styles.unzipUrlBox} infoBox`}>
           <form id="urlForm" className={styles.urlForm}>
             <h1>Paste the ZipLink below to see where it redirects</h1>
-            <div>
-              <div className={styles.controls}>
-                <input
-                  type="text"
-                  id="zipLinkInput"
-                  name="url"
-                  className={`${styles.urlInput} textInput`}
-                  placeholder="Enter zipped URL here"
-                />
-                <button
-                  type="submit"
-                  className={`${styles.btn} btn`}
-                  onClick={clickHandler}
-                >
-                  Unzip
-                </button>
-              </div>
+            <div className={styles.controls}>
+              <input
+                type="text"
+                id="zipLinkInput"
+                name="url"
+                className={`${styles.urlInput} textInput`}
+                placeholder="Enter zipped URL here"
+              />
+              <button
+                type="submit"
+                className={`${styles.btn} btn`}
+                onClick={clickHandler}
+              >
+                Unzip
+              </button>
             </div>
           </form>
           {url ? (

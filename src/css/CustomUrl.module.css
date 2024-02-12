@@ -13,13 +13,19 @@
   flex-direction: nowrap;
 }
 
-.controls .urlInput {
+.controlsWrapper {
+  display: flex;
 }
 
 .controls .customKeyInput {
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0rem;
 }
 
 .controls .btn {
+  border-bottom-left-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-left: 0px;
 }
 
 .errorMessage {

@@ -1,6 +1,10 @@
 .unzipUrlBox {
 }
 
+.controls {
+  display: flex;
+}
+
 .urlForm {
   display: flex;
   flex-direction: column;
@@ -8,7 +12,12 @@
 }
 
 .controls .urlInput {
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0rem;
 }
 
 .controls .btn {
+  border-top-left-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-left: 0px;
 }
