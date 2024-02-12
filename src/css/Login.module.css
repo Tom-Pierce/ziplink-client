@@ -1,6 +1,3 @@
-.signUpBox {
-}
-
 .controls {
   display: flex;
   flex-direction: column;
@@ -34,4 +31,13 @@
   font-weight: bold;
   font-size: 1.25rem;
   margin: 1rem;
+}
+
+.loginBox a {
+  display: flex;
+  justify-content: center;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  text-decoration: none;
+  color: var(--secondary);
 }

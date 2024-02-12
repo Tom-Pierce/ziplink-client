@@ -1,6 +1,7 @@
 import styles from "../css/Login.module.css";
 import googleLogo from "../assets/google_logo.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [errorMsg, setErrorMsg] = useState();
@@ -39,7 +40,7 @@ const Login = () => {
   return (
     <>
       <div className="main">
-        <div className={`${styles.signUpBox} infoBox`}>
+        <div className={`${styles.loginBox} infoBox`}>
           <h1>Log in</h1>
           <form id="signUpForm">
             <div className={styles.controls}>
@@ -78,6 +79,7 @@ const Login = () => {
           >
             <img src={googleLogo} alt="google logo" /> Log in with Google
           </button>
+          <Link to="/signup">Create account</Link>
         </div>
       </div>
     </>
