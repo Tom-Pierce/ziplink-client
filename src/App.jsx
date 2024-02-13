@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { createContext, useEffect, useState } from "react";
 import Routes from "./components/Routes";
 import { BrowserRouter } from "react-router-dom";
+import Loader from "./components/Loader";
 
 export const UserContext = createContext(null);
 
@@ -83,7 +84,7 @@ function App() {
       >
         <BrowserRouter>
           <Header />
-          <Routes />
+          {user ? <Routes /> : <Loader />}
           <Footer />
         </BrowserRouter>
       </UserContext.Provider>
