@@ -12,6 +12,7 @@ export const UserContext = createContext(null);
 function App() {
   const [user, setUser] = useState(undefined);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [fetchingUserInfo, setFetchingUserInfo] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +29,10 @@ function App() {
       );
       const { authenticated } = await res.json();
       if (authenticated) setLoggedIn(true);
-      else setLoggedIn(false);
+      else {
+        setLoggedIn(false);
+        setFetchingUserInfo(false);
+      }
     };
     fetchData();
   }),
@@ -49,7 +53,11 @@ function App() {
             },
           }
         );
-        if (res.status === 401) return;
+        if (res.status === 401) {
+          console.log("fetching complete");
+          setFetchingUserInfo(false);
+          return;
+        }
         const json = await res.json();
         if (json.success) {
           setUser((user) => {
@@ -60,6 +68,8 @@ function App() {
               email: json.user.email,
               ...user,
             };
+            console.log("fetching complete");
+            setFetchingUserInfo(false);
 
             return updatedUser;
           });
@@ -84,7 +94,7 @@ function App() {
       >
         <BrowserRouter>
           <Header />
-          {user ? <Routes /> : <Loader />}
+          {fetchingUserInfo ? <Loader /> : <Routes />}
           <Footer />
         </BrowserRouter>
       </UserContext.Provider>
