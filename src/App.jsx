@@ -54,7 +54,6 @@ function App() {
           }
         );
         if (res.status === 401) {
-          console.log("fetching complete");
           setFetchingUserInfo(false);
           return;
         }
@@ -68,7 +67,6 @@ function App() {
               email: json.user.email,
               ...user,
             };
-            console.log("fetching complete");
             setFetchingUserInfo(false);
 
             return updatedUser;
