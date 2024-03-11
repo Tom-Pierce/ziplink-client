@@ -14,7 +14,7 @@ Ziplink is a powerful tool for managing and sharing links. Whether you're lookin
 
 ## Live Site
 
-Check out the live Ziplink site at [ziplink.xyz](https://ziplink.xyz)!
+Check out the live Ziplink site at [ziplink.xyz](https://ziplink.xyz), a demo account is available to test how to site works
 
 ![ziplink site](/src/assets/websitePreview.png)
 
