@@ -10,6 +10,33 @@ const Login = () => {
     window.open(`${import.meta.env.VITE_API_URL}api/auth/google`, "_self");
   };
 
+  const demoClickHandler = async (e) => {
+    e.preventDefault();
+    setErrorMsg();
+    const email = "demo@example.com";
+    const password = "ThisIsADemoAccount123";
+
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}api/auth/local/login`,
+      {
+        method: "post",
+        mode: "cors",
+        body: JSON.stringify({ email, password }),
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (res.status === 200)
+      window.location.href = `${window.location.protocol}//${window.location.host}/`;
+    if (res.status === 401) {
+      const { message } = await res.json();
+      setErrorMsg(message);
+    }
+  };
+
   const localClickHandler = async (e) => {
     e.preventDefault();
     setErrorMsg();
@@ -73,12 +100,21 @@ const Login = () => {
             </div>
           </form>
           <p>or</p>
-          <button
-            className={styles.authWithProviderBtn}
-            onClick={googleClickHandler}
-          >
-            <img src={googleLogo} alt="google logo" /> Log in with Google
-          </button>
+          <div className={styles.alternateLogins}>
+            <button
+              className={styles.authWithProviderBtn}
+              onClick={googleClickHandler}
+            >
+              <img src={googleLogo} alt="google logo" /> Log in with Google
+            </button>
+            <button
+              className={styles.authWithProviderBtn}
+              onClick={demoClickHandler}
+            >
+              Log in with demo account
+            </button>
+          </div>
+
           <Link to="/signup">Create account</Link>
         </div>
       </div>
